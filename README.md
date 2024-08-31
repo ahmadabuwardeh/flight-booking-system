@@ -58,3 +58,11 @@ curl -X POST "http://localhost:8080/api/bookings?flightCode=BA-101&passengerName
 ### Database
 
 This application uses an H2 in-memory database, so no external database setup is required. The database will reset on every application restart.
+
+
+## Running Tests
+
+To ensure that all functionalities are working correctly, you can run the unit tests provided in the project:
+
+   ```bash
+   mvn clean test

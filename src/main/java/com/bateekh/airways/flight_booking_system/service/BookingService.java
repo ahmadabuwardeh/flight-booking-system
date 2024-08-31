@@ -22,14 +22,14 @@ public class BookingService {
     private FlightRepository flightRepository;
 
     public Booking bookFlight(String flightCode, String passengerName, int passengers) {
-        validateBookingCriteria(passengerName, passengers);
-
         Flight flight = flightRepository.findById(flightCode)
                 .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
 
         if (flight.getAvailableSeats() < passengers) {
             throw new InsufficientSeatsException("Not enough seats available.");
         }
+
+        validateBookingCriteria(passengerName, passengers);
 
         flight.setAvailableSeats(flight.getAvailableSeats() - passengers);
         flightRepository.save(flight);

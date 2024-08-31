@@ -1,18 +1,31 @@
-package com.bateekh.airways.model;
+package com.bateekh.airways.flight_booking_system.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class Flight {
     @Id
     private String flightCode;
+
+    @NotNull
     private String origin;
+
+    @NotNull
     private String destination;
-    private String departureTime;
+
+    @NotNull
+    private LocalDate departureDate;
+
+    @NotNull
+    private LocalTime arrivalTime;
+
     private int availableSeats;
 
-    // Getters and Setters
 
     public String getFlightCode() {
         return flightCode;
@@ -38,12 +51,20 @@ public class Flight {
         this.destination = destination;
     }
 
-    public String getDepartureTime() {
-        return departureTime;
+    public LocalDate getDepartureDate() {
+        return departureDate;
     }
 
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public LocalTime getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(LocalTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     public int getAvailableSeats() {
